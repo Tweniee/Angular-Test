@@ -1,0 +1,6 @@
+<span *ngIf="!isView">
+    <app-user-form (isViewTable)="viewTable($event)"></app-user-form>
+</span>
+<span *ngIf="isView">
+    <app-user-table (isShowCreate)="showCreate($event)"></app-user-table>
+</span>

@@ -1,0 +1,32 @@
+<div *ngIf="!isProfile">
+    <button class="btn btn-primary" (click)="showCreate()">Create Form</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Profile Image</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop over the user data to generate rows -->
+            <tr *ngFor="let item of allData;let i = index" (dblclick)="showProfile(item._id)">
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>j{{item.email}}</td>
+                <td>{{item.phoneNumber}}</td>
+                <td style="width:100px"><img [src]="baseUrl+item.profileImage" alt="Image" class="img-fluid"></td>
+                <td><a (click)="edit(item)" class="btn btn-primary">Edit</a></td>
+                <td><a (click)="delete(item._id)" class="btn btn-danger">Delete</a></td>
+            </tr>
+            <!-- Repeat the above row for each user -->
+        </tbody>
+    </table>
+</div>
+<div *ngIf="isProfile">
+    <app-user-profile></app-user-profile>
+</div>
